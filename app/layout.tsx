@@ -29,8 +29,8 @@ export default function RootLayout({
       <body
         className={cn(
           "bg-background antialiased min-h-screen",
-          fontNotoSansJP.variable,
-          geistMono.variable
+          geistMono.variable,
+          fontNotoSansJP.variable
         )}
       >
         {children}
