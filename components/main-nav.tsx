@@ -1,24 +1,27 @@
 import Link from "next/link";
+import { NavItem } from "@/types";
 
-export default function MainNav() {
+interface MainNavProps {
+  items?: NavItem[];
+  children?: React.ReactNode;
+}
+
+export default function MainNav({ items }: MainNavProps) {
   return (
     <div className="flex items-center md:gap-10">
       <Link href={"/"} className="hidden md:flex items-center space-x-2">
         <span className="font-bold hidden md:inline-block">Post Writer</span>
       </Link>
       <nav className="md:flex gap-6 hidden">
-        <Link
-          href={"/blog"}
-          className="text-lg sm:text-xl font-medium hover:text-foreground/80"
-        >
-          ブログ
-        </Link>
-        <Link
-          href={"#features"}
-          className="text-lg sm:text-xl font-medium hover:text-foreground/80"
-        >
-          機能
-        </Link>
+        {items?.map((item, index) => (
+          <Link
+            key={index}
+            href={item.href}
+            className="text-lg sm:text-xl font-medium hover:text-foreground/80"
+          >
+            {item.title}
+          </Link>
+        ))}
       </nav>
     </div>
   );
